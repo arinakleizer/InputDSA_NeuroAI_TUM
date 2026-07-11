@@ -1,4 +1,4 @@
-# NeuroAI_and_MAC_InputDSA
+# InputDSA_Apek_Arina
 # Task and architecture in learned RNN dynamics
 
 InputDSA analysis of how recurrent network architecture and task shape learned dynamics.
