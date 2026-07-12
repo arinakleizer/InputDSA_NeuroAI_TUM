@@ -24,34 +24,34 @@ These stay in the folder as a record of the full exploration.
 
 | File | Cell | Caption |
 | --- | --- | --- |
-| `FINAL_heatmap_rank15.png` | Cell 37 | A distance heatmap recomputed at the AIC-optimal rank 15. The task clustering stays the same as at rank 20, which supports the claim that task dominance is stable across ranks. |
-| `FINAL_comparison_bar.png` | Cell 37 | Bar chart comparison of task and architecture effects at rank 15, side by side with the noise floor. Same qualitative picture as at rank 20. |
-| `distance_heatmap_rank_pr.png` | Cell 25 | A distance heatmap at the participation ratio rank (rank 8). Shown as a sensitivity check on rank choice. |
-| `dendrogram_rank_pr.png` | Cell 25 | Dendrogram at rank 8. Task clustering still visible, so the qualitative structure holds at a low rank. |
-| `distance_by_category.png` | Cell 12 | Distances split into within-cell, across-architecture-within-task and across-task-within-architecture categories, shown as violin or bar plots. Visual summary of the effects reported in the main table. |
-| `mds_projection.png` | Cell 13 | Two-dimensional MDS projection of the 20 A matrices. Task groups are visible as clusters, architecture groups less so. |
-| `mds_shepard.png` | Cell 14 | Shepard diagram checking how much the two-dimensional MDS projection distorts the original 20-dimensional distances. |
-| `permutation_test.png` | Cell 20 | Null distributions from the label permutation test for the task and architecture effects. The observed values sit well outside the null distribution for both. |
-| `participation_ratio.png` | Cell 23 | Participation ratio of the hidden state covariance across all 20 models. The value is stable around 8 across seeds and cells, which motivated the low-rank sensitivity check at rank 8. |
-| `optimal_hard_threshold.png` | Cell 32 | Optimal Hard Threshold rank estimate from Gavish and Donoho (2014) for each model. The threshold is very consistent at rank 13. |
-| `mase_aic_sweep.png` | Cell 36 | MASE and AIC as a function of rank. AIC has a clear minimum at rank 15. MASE stays above 1 for every rank tested, so the linear fit does not beat the trivial baseline in absolute terms. |
-| `interaction_hypothesis_test.png` | Cell 31 | Direct hypothesis test for the A interaction at the original rank 20. The observed interaction is small and does not survive the permutation test. |
-| `sensitivity_hyperparams.png` | Cell 22 | Sensitivity of the task and architecture effects to InputDSA hyperparameters. The qualitative pattern (task > architecture) survives every change. |
-| `sensitivity_rank_pr.png` | Cell 24 | Sensitivity check at the participation ratio rank (rank 8). The task effect drops slightly but stays dominant, the architecture effect grows slightly. |
-| `sensitivity_val_batch.png` | Cell 21 | Sensitivity of the A effects to the choice of the fixed validation batch. Direction of the effects holds, exact numbers shift. |
-| `sensitivity_fixation.png` | Cell 17 | Sensitivity check on the input: what changes when we exclude the fixation channel and recompute the A distances. Task effect drops from 0.290 to 0.248, architecture effect grows from 0.066 to 0.094, ratio drops from 4.4 to 2.7. |
-| `sensitivity_fixation_outlier_highlight.png` | Cell 18 | Same as above with the vanilla DC seed 2 outlier highlighted, to check whether the shift is driven by the outlier. It is not. |
-| `coarse_vs_fine_test.png` | Cell 40 | Test of the coarse-vs-fine hypothesis: do the top eigenvalues dominate the distance measure? Split of the eigenvalue spectrum into slow and fast modes with distances computed separately. |
-| `nestedness_check.png` | Cell 41 | Check whether the low-rank fits at rank 8, 13 and 15 are nested inside the rank 20 fit. |
-| `outlier_eigenvalues.png` | Cell 15 | Eigenvalues of the vanilla DC seed 2 outlier. The model shows only three slow modes near the unit circle instead of the usual five to eleven, which explains the unusual distance profile. |
-| `outlier_hidden_activity.png` | Cell 15 | Hidden state trajectory of the vanilla DC seed 2 outlier, for comparison with the other vanilla DC seeds. |
-| `vanilla_dc_fixed_points.png` | Cell 16 | Autonomous fixed point analysis for vanilla DC models. The outlier finds a qualitatively different set of fixed points from the other seeds. |
-| `B_distance_no_fixation.png` | Cell 46 | B B^T distance recomputed with the fixation channel excluded from the input. The architecture effect on PDM drops sharply, showing that fixation is central to the effect. |
-| `B_effect_decomposition.png` | Cell 48 | Decomposition of the B architecture effect on PDM by input channel subset (fixation alone, stimulus alone, both). Both channels together are needed to produce the effect. |
-| `B_effective_input_dim.png` | Cell 43 | Effective input dimension (participation ratio of B singular values). Compact summary of the B compression story: vanilla uses 2.82 of 3 channels on PDM, GRU uses 2.37, LSTM uses 2.12. |
-| `B_loadings_both_tasks.png` | Cell 49 | Input mode loading heatmaps for PDM and DC side by side. On PDM the segregation is stable across seeds. On DC the segregation exists but the mode holding fixation flips across seeds. |
-| `B_channel_injection_angles.png` | Cell 51 | Angles between the raw input channel injection directions in state space. The trend runs opposite to the loading prediction and is not significant, which is why we call this part of the mechanism partly open. |
-| `B_state_angles.png` | Cell 51 | Angles between input modes in state space. Companion figure to the channel injection angles. |
+| `FINAL_heatmap_rank15.png` | 37 | A distance heatmap recomputed at the AIC-optimal rank 15. The task clustering stays the same as at rank 20, which supports the claim that task dominance is stable across ranks. |
+| `FINAL_comparison_bar.png` |37 | Bar chart comparison of task and architecture effects at rank 15, side by side with the noise floor. Same qualitative picture as at rank 20. |
+| `distance_heatmap_rank_pr.png` |  25 | A distance heatmap at the participation ratio rank (rank 8). Shown as a sensitivity check on rank choice. |
+| `dendrogram_rank_pr.png` |  25 | Dendrogram at rank 8. Task clustering still visible, so the qualitative structure holds at a low rank. |
+| `distance_by_category.png` | 12 | Distances split into within-cell, across-architecture-within-task and across-task-within-architecture categories, shown as violin or bar plots. Visual summary of the effects reported in the main table. |
+| `mds_projection.png` | 13 | Two-dimensional MDS projection of the 20 A matrices. Task groups are visible as clusters, architecture groups less so. |
+| `mds_shepard.png` | 14 | Shepard diagram checking how much the two-dimensional MDS projection distorts the original 20-dimensional distances. |
+| `permutation_test.png` | 20 | Null distributions from the label permutation test for the task and architecture effects. The observed values sit well outside the null distribution for both. |
+| `participation_ratio.png` |  23 | Participation ratio of the hidden state covariance across all 20 models. The value is stable around 8 across seeds and cells, which motivated the low-rank sensitivity check at rank 8. |
+| `optimal_hard_threshold.png` | 32 | Optimal Hard Threshold rank estimate from Gavish and Donoho (2014) for each model. The threshold is very consistent at rank 13. |
+| `mase_aic_sweep.png` | 36 | MASE and AIC as a function of rank. AIC has a clear minimum at rank 15. MASE stays above 1 for every rank tested, so the linear fit does not beat the trivial baseline in absolute terms. |
+| `interaction_hypothesis_test.png` |  31 | Direct hypothesis test for the A interaction at the original rank 20. The observed interaction is small and does not survive the permutation test. |
+| `sensitivity_hyperparams.png` | 22 | Sensitivity of the task and architecture effects to InputDSA hyperparameters. The qualitative pattern (task > architecture) survives every change. |
+| `sensitivity_rank_pr.png` | 24 | Sensitivity check at the participation ratio rank (rank 8). The task effect drops slightly but stays dominant, the architecture effect grows slightly. |
+| `sensitivity_val_batch.png` |  21 | Sensitivity of the A effects to the choice of the fixed validation batch. Direction of the effects holds, exact numbers shift. |
+| `sensitivity_fixation.png` |  17 | Sensitivity check on the input: what changes when we exclude the fixation channel and recompute the A distances. Task effect drops from 0.290 to 0.248, architecture effect grows from 0.066 to 0.094, ratio drops from 4.4 to 2.7. |
+| `sensitivity_fixation_outlier_highlight.png` | 18 | Same as above with the vanilla DC seed 2 outlier highlighted, to check whether the shift is driven by the outlier. It is not. |
+| `coarse_vs_fine_test.png` |  40 | Test of the coarse-vs-fine hypothesis: do the top eigenvalues dominate the distance measure? Split of the eigenvalue spectrum into slow and fast modes with distances computed separately. |
+| `nestedness_check.png` |  41 | Check whether the low-rank fits at rank 8, 13 and 15 are nested inside the rank 20 fit. |
+| `outlier_eigenvalues.png` | 15 | Eigenvalues of the vanilla DC seed 2 outlier. The model shows only three slow modes near the unit circle instead of the usual five to eleven, which explains the unusual distance profile. |
+| `outlier_hidden_activity.png` | 15 | Hidden state trajectory of the vanilla DC seed 2 outlier, for comparison with the other vanilla DC seeds. |
+| `vanilla_dc_fixed_points.png` | 16 | Autonomous fixed point analysis for vanilla DC models. The outlier finds a qualitatively different set of fixed points from the other seeds. |
+| `B_distance_no_fixation.png` |  46 | B B^T distance recomputed with the fixation channel excluded from the input. The architecture effect on PDM drops sharply, showing that fixation is central to the effect. |
+| `B_effect_decomposition.png` |  48 | Decomposition of the B architecture effect on PDM by input channel subset (fixation alone, stimulus alone, both). Both channels together are needed to produce the effect. |
+| `B_effective_input_dim.png` | 43 | Effective input dimension (participation ratio of B singular values). Compact summary of the B compression story: vanilla uses 2.82 of 3 channels on PDM, GRU uses 2.37, LSTM uses 2.12. |
+| `B_loadings_both_tasks.png` |  49 | Input mode loading heatmaps for PDM and DC side by side. On PDM the segregation is stable across seeds. On DC the segregation exists but the mode holding fixation flips across seeds. |
+| `B_channel_injection_angles.png` |  51 | Angles between the raw input channel injection directions in state space. The trend runs opposite to the loading prediction and is not significant, which is why we call this part of the mechanism partly open. |
+| `B_state_angles.png` | 51 | Angles between input modes in state space. Companion figure to the channel injection angles. |
 
 ## Regenerating a figure
 
