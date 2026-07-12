@@ -1,0 +1,26 @@
+# Core numerical stack
+# Pinned to avoid version conflicts with the DSA package on Colab.
+numpy==2.2.6
+scipy==1.14.1
+
+# Deep learning
+torch
+torchvision
+
+# Tasks (NeuroGym wraps gymnasium)
+neurogym
+gymnasium
+
+# Analysis and plotting
+scikit-learn
+matplotlib
+seaborn
+pandas
+
+# Notebook environment
+jupyter
+ipykernel
+
+# Dynamical Similarity Analysis (DSA + InputDSA).
+# Not on PyPI, install manually after `pip install -r requirements.txt`:
+#   pip install "git+https://github.com/mitchellostrow/DSA.git"
