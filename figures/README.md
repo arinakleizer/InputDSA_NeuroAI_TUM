@@ -20,7 +20,7 @@ These are referenced directly in the main text. They are the core figures we wou
 
 ## Additional figures
 
-These stay in the folder as a record of the full exploration. They are not embedded in the main technical note, but each of them has its cell in the notebook if a reviewer wants to go deeper.
+These stay in the folder as a record of the full exploration.
 
 | File | Cell | Caption |
 | --- | --- | --- |
