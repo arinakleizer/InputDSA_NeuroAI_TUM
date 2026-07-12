@@ -2,13 +2,11 @@
 
 ## Background and hypothesis
 
-**Hypothesis:** 
-
-*"Task demands constrain the intrinsic dynamics of a recurrent network more than architecture does, but architecture still leaves a mark in how the input is read into the dynamics, and this mark is task dependent."*
+**Hypothesis.** Task demands constrain the intrinsic dynamics of a recurrent network more than architecture does, but architecture still leaves a mark in how the input is read into the dynamics, and this mark is task dependent.
 
 We arrived at this in steps. Our starting claim was only the first half: two networks with different cells but the same task should look more alike than two networks with the same cell but different tasks. Maheswaranathan et al. (2019) then showed us that this is only part of the picture: architecture strongly shapes the fine geometry of the learned dynamics, even when the coarse topology is shared. So the intrinsic dynamics is one thing, but the input processing is another, and architecture could still leave a signature there.
 
-**Why we need InputDSA.** To test both parts at once, we need a method that can separate them. InputDSA (Huang et al. 2025) fits x_next = A x + B u to the hidden states and returns two objects we can compare:
+**Why we need InputDSA.** To test both parts at once, we need a method that can separate them. InputDSA (Huang et al. 2025) fits $x_{n+1} = A x_n + B u_n$ to the hidden states and returns two objects we can compare:
 
 - A, the intrinsic dynamics, where we expect the task to dominate
 - B, the input matrix, where architecture can still show up
@@ -39,7 +37,11 @@ The method has three moving parts: train a matched set of small networks, fit an
 
 **Fitting A and B.**
 
-- fit x_next = A x + B u with SubspaceDMDc on a fixed validation batch of 64 sequences of length 100 (seed 1234). A is 32 by 32 for every model, whatever the input dimension
+- fit
+
+$$x_{n+1} = A x_n + B u_n$$
+
+with SubspaceDMDc on a fixed validation batch of 64 sequences of length 100 (seed 1234). A is 32 by 32 for every model, whatever the input dimension
 - InputDSA settings: delay embedding 10, fit rank studied separately (see below), no ridge (lamb 0), n4sid backend
 - Cell 9, Cell 10
 
@@ -60,7 +62,7 @@ We split the pairs into three kinds and read each effect as how far its mean sit
 **B analysis.** For B we use measures that need no alignment step:
 
 - singular value spectrum and effective input dimension (participation ratio of the singular values) (Cell 43)
-- B B^T distance within each task, where B B^T captures the directions into which input is injected (Cell 44)
+- $BB^T$ distance within each task, where $BB^T$ captures the directions into which input is injected (Cell 44)
 - SVD of B for the input loadings, which show how channels are grouped into input modes (Cell 49)
 
 ## Main results
@@ -116,9 +118,9 @@ The second half of the hypothesis holds too, and this is the main positive resul
 
 Unlike the A interaction, this does not flip with rank (Cell 45). So architecture is not invisible after all. It marks how input is read, on PDM but not on DC.
 
-![B B^T pairwise distance on PDM. A clear architecture block pattern: vanilla-vanilla and GRU-GRU pairs are dark, vanilla-GRU pairs are bright.](figures/B_distance_PerceptualDecisionMaking.png)
+![$BB^T$ pairwise distance on PDM. A clear architecture block pattern: vanilla-vanilla and GRU-GRU pairs are dark, vanilla-GRU pairs are bright.](figures/B_distance_PerceptualDecisionMaking.png)
 
-![B B^T pairwise distance on DC. No architecture block pattern, the two architectures are indistinguishable by this measure.](figures/B_distance_DelayComparison.png)
+![$BB^T$ pairwise distance on DC. No architecture block pattern, the two architectures are indistinguishable by this measure.](figures/B_distance_DelayComparison.png)
 
 The effective input dimension tells the same story with one number (Cell 43). On PDM vanilla uses 2.82 of its 3 channels, GRU uses 2.37 (difference 0.45, p = 0.009). On DC both use about 1.9 of their 2 channels (difference 0.03, p = 0.50).
 
@@ -135,7 +137,7 @@ The effect is about how the network coordinates several input channels, not how 
 
 ![Input mode loadings on PDM. Vanilla (left) spreads fixation across all three modes. GRU (right) concentrates fixation into a single mode (0.93) and pushes the two stimulus channels into modes 2 and 3.](figures/B_input_modes.png)
 
-For DC the same segregation exists in the GRU, but the mode holding fixation flips across seeds. B B^T ignores mode order, so this is invisible to the distance measure even though the loading heatmaps show it (Cell 50). So the DC null is partly about the measure and not only about the networks.
+For DC the same segregation exists in the GRU, but the mode holding fixation flips across seeds. $BB^T$ ignores mode order, so this is invisible to the distance measure even though the loading heatmaps show it (Cell 50). So the DC null is partly about the measure and not only about the networks.
 
 One piece is still open. The angles between the raw channel injection directions run opposite to the loading prediction and are not significant (Cell 51). The loadings give a clear result but the full mechanism is not closed.
 
@@ -145,8 +147,8 @@ The B result generalises to a second gated architecture. We added LSTM as a thir
 
 | Metric (on PDM) | vanilla | GRU | LSTM |
 | --- | --- | --- | --- |
-| B B^T distance to vanilla | (self) | +0.211, p < 0.001 | +0.306, p < 0.001 |
-| B B^T distance to GRU | +0.211 | (self) | +0.008, p = 0.36 (ns) |
+| $BB^T$ distance to vanilla | (self) | +0.211, p < 0.001 | +0.306, p < 0.001 |
+| $BB^T$ distance to GRU | +0.211 | (self) | +0.008, p = 0.36 (ns) |
 | Effective input dim (max 3) | 2.82 | 2.37 | 2.12 |
 | Fixation loading in mode 1 | 0.74 ± 0.12 | 0.93 ± 0.05 | 0.92 ± 0.03 |
 
@@ -162,17 +164,19 @@ Two gated architectures cluster together on PDM, both separated from vanilla, an
 
 **InputDSA is what makes this possible.** Plain DSA would have shown only the A part and looked like a simple "task wins" story. Separating out B is what lets us also see the architectural signature in how input is read into the dynamics.
 
-**The B mechanism groups architectures into two families.** Gated architectures (GRU, LSTM) segregate timing into a dedicated input mode. Vanilla RNN blends timing and content. This "gated vs non-gated" split is clean on PDM and absent on DC. On DC the same segregation exists inside gated networks, but the mode holding fixation flips across seeds, so B B^T cannot see it. In other words, the DC null is partly about the measure, not only about the networks.
+**The B mechanism groups architectures into two families.** Gated architectures (GRU, LSTM) segregate timing into a dedicated input mode. Vanilla RNN blends timing and content. This "gated vs non-gated" split is clean on PDM and absent on DC. On DC the same segregation exists inside gated networks, but the mode holding fixation flips across seeds, so $BB^T$ cannot see it. In other words, the DC null is partly about the measure, not only about the networks.
 
 **What stays open.** The sharper A interaction claim did not survive rank sensitivity, so we call it inconclusive. Two items for future work: an independent test of solution diversity between the two tasks, and a qualitatively different task such as the flip flop task of Sussillo and Barak (2013), where the shared attractor motif of PDM and DC is broken.
 
 ## Limitations
 
+None of these break the main result, but they mark where a reader should hold our conclusions with care.
+
 - **PDM sits below DC in accuracy.** The raw task effect is slightly confounded with training quality. Architectures are matched within each task, so the architecture effect is clean (Cell 7).
 - **The A analysis depends on the rank.** Task dominance holds across ranks, but the interaction sign flips and OHT (13) and AIC (15) disagree, so the A interaction is inconclusive (Cells 31 to 39). MASE also stayed above 1 (Cell 36).
 - **No independent constraint ranking.** Barak et al. (2013) show DC admits several solutions, so we do not rank the tasks by solution count. A structural analysis is future work.
 - **B magnitude is not fixed.** Across validation batches the PDM effect moves from 0.21 to 0.14 (still significant), the DC effect from 0.002 to 0.038 (p 0.49 to 0.09). The pattern holds, the numbers shift (Cell 47).
-- **B B^T can hide an effect.** It ignores mode order, so gated segregation on DC (flipping modes across seeds) is invisible to it even though the loading heatmaps show it (Cell 49, Cell 50).
+- **$BB^T$ can hide an effect.** It ignores mode order, so gated segregation on DC (flipping modes across seeds) is invisible to it even though the loading heatmaps show it (Cell 49, Cell 50).
 - **The mechanism is only partly closed.** Loadings give a significant difference but injection angles run the other way and are not significant (Cell 51).
 - **Only two tasks, and they are dynamically similar.** Both lean on a slow attractor motif. A flip flop task (Sussillo and Barak 2013) would give architecture more room to differ.
 - **The LSTM check is deliberately narrow.** Three metrics on 10 models, matched to the main analysis. A broader sweep over network types and sizes was out of scope.
