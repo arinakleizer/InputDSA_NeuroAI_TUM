@@ -8,15 +8,15 @@ These are referenced directly in the main text. They are the core figures we wou
 
 | File | Cell | Caption |
 | --- | --- | --- |
-| `distance_heatmap.png` | Cell 12 | Pairwise angular Procrustes distance between the 20 A matrices. Task blocks (PDM against DC) are the strongest structure. Architecture blocks show up more weakly, mostly inside PDM. |
-| `dendrogram.png` | Cell 13 | Hierarchical clustering of the same distance matrix. The first split is by task. The second split, inside PDM, separates GRU from vanilla. Inside DC the two architectures stay mixed. |
-| `interaction_vs_rank_dense.png` | Cell 39 | Interaction effect (DC architecture effect minus PDM architecture effect) as a function of the fit rank. Smooth curve that crosses zero between rank 14 and rank 15, right around the AIC-optimal rank. With and without the vanilla DC outlier the two curves are almost identical. |
-| `B_distance_PerceptualDecisionMaking.png` | Cell 44 | B B^T pairwise distance on PDM. Clear architecture block pattern: vanilla-vanilla and GRU-GRU pairs are dark, vanilla-GRU pairs are bright. Visual support for the +0.211 architecture effect. |
-| `B_distance_DelayComparison.png` | Cell 44 | B B^T pairwise distance on DC. No architecture block pattern, the two architectures are indistinguishable by this measure. Visual support for the +0.002 null effect. |
-| `B_arch_effect_vs_rank.png` | Cell 45 | Architecture effect on B (B B^T distance) as a function of the fit rank. On PDM the effect stays large (around 0.20) across every rank. On DC it stays near zero. The two curves never cross, so the B result is rank-invariant, unlike the A interaction. |
-| `B_singular_spectrum.png` | Cell 43 | B singular value spectra on PDM and DC. On PDM the GRU spectrum drops more steeply than vanilla, so the GRU concentrates the input into fewer effective directions. On DC the two spectra are more similar. |
-| `B_input_modes.png` | Cell 49 | Input mode loadings on PDM for vanilla and GRU. Vanilla spreads fixation across all three modes with loadings 0.74, 0.49 and 0.38. GRU concentrates fixation into a single mode with loading 0.93 and pushes the two stimulus channels into modes 2 and 3. This is the segregation vs blending mechanism. |
-| `B_input_modes_lstm_pdm.png` | Cell 59 | LSTM input mode loadings on PDM. Just like GRU, LSTM concentrates fixation into a single input mode (0.92) and pushes the two stimulus channels into the other two modes. The segregation mechanism is not specific to GRU, it generalises to a second gated architecture. |
+| `distance_heatmap.png` |  12 | Pairwise angular Procrustes distance between the 20 A matrices. Task blocks (PDM against DC) are the strongest structure. Architecture blocks show up more weakly, mostly inside PDM. |
+| `dendrogram.png` |  13 | Hierarchical clustering of the same distance matrix. The first split is by task. The second split, inside PDM, separates GRU from vanilla. Inside DC the two architectures stay mixed. |
+| `interaction_vs_rank_dense.png` |  39 | Interaction effect (DC architecture effect minus PDM architecture effect) as a function of the fit rank. Smooth curve that crosses zero between rank 14 and rank 15, right around the AIC-optimal rank. With and without the vanilla DC outlier the two curves are almost identical. |
+| `B_distance_PerceptualDecisionMaking.png` |  44 | B B^T pairwise distance on PDM. Clear architecture block pattern: vanilla-vanilla and GRU-GRU pairs are dark, vanilla-GRU pairs are bright. Visual support for the +0.211 architecture effect. |
+| `B_distance_DelayComparison.png` | 44 | B B^T pairwise distance on DC. No architecture block pattern, the two architectures are indistinguishable by this measure. Visual support for the +0.002 null effect. |
+| `B_arch_effect_vs_rank.png` |45 | Architecture effect on B (B B^T distance) as a function of the fit rank. On PDM the effect stays large (around 0.20) across every rank. On DC it stays near zero. The two curves never cross, so the B result is rank-invariant, unlike the A interaction. |
+| `B_singular_spectrum.png` | 43 | B singular value spectra on PDM and DC. On PDM the GRU spectrum drops more steeply than vanilla, so the GRU concentrates the input into fewer effective directions. On DC the two spectra are more similar. |
+| `B_input_modes.png` |  49 | Input mode loadings on PDM for vanilla and GRU. Vanilla spreads fixation across all three modes with loadings 0.74, 0.49 and 0.38. GRU concentrates fixation into a single mode with loading 0.93 and pushes the two stimulus channels into modes 2 and 3. This is the segregation vs blending mechanism. |
+| `B_input_modes_lstm_pdm.png` |  59 | LSTM input mode loadings on PDM. Just like GRU, LSTM concentrates fixation into a single input mode (0.92) and pushes the two stimulus channels into the other two modes. The segregation mechanism is not specific to GRU, it generalises to a second gated architecture. |
 
 ## Additional figures
 
