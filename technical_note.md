@@ -2,7 +2,9 @@
 
 ## Background and hypothesis
 
-**Hypothesis.** Task demands constrain the intrinsic dynamics of a recurrent network more than architecture does, but architecture still leaves a mark in how the input is read into the dynamics, and this mark is task dependent.
+**Hypothesis.** 
+
+*Task demands constrain the intrinsic dynamics of a recurrent network more than architecture does, but architecture still leaves a mark in how the input is read into the dynamics, and this mark is task dependent.*
 
 We arrived at this in steps. Our starting claim was only the first half: two networks with different cells but the same task should look more alike than two networks with the same cell but different tasks. Maheswaranathan et al. (2019) then showed us that this is only part of the picture: architecture strongly shapes the fine geometry of the learned dynamics, even when the coarse topology is shared. So the intrinsic dynamics is one thing, but the input processing is another, and architecture could still leave a signature there.
 
@@ -169,8 +171,6 @@ Two gated architectures cluster together on PDM, both separated from vanilla, an
 **What stays open.** The sharper A interaction claim did not survive rank sensitivity, so we call it inconclusive. Two items for future work: an independent test of solution diversity between the two tasks, and a qualitatively different task such as the flip flop task of Sussillo and Barak (2013), where the shared attractor motif of PDM and DC is broken.
 
 ## Limitations
-
-None of these break the main result, but they mark where a reader should hold our conclusions with care.
 
 - **PDM sits below DC in accuracy.** The raw task effect is slightly confounded with training quality. Architectures are matched within each task, so the architecture effect is clean (Cell 7).
 - **The A analysis depends on the rank.** Task dominance holds across ranks, but the interaction sign flips and OHT (13) and AIC (15) disagree, so the A interaction is inconclusive (Cells 31 to 39). MASE also stayed above 1 (Cell 36).
