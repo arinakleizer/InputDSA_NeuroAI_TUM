@@ -1,26 +1,22 @@
 # Task and architecture in learned RNN dynamics
 
-**Apekshith Thirnahalli Jayadeva** / **Arina Kleizer**
+Apekshith Thirnahalli Jayadeva  &  Arina Kleizer 
 
-TUM School of Life Sciences , NeuroAI and ML for Neuroscience , Summer Semester 2026
+NeuroAI and ML for Neuroscience / TUM School of Life Sciences / Summer Semester 2026
 
 ## 1. Project summary
 
-We ask whether the task or the architecture shapes the learned dynamics of a recurrent network more, and whether the answer depends on the task. We train small vanilla RNNs and GRUs on two NeuroGym tasks, PerceptualDecisionMaking (PDM) and DelayComparison (DC), fit an input driven linear model with InputDSA (Huang et al. 2025) and compare the fitted matrices across models. An extension adds an LSTM as a third architecture.
+We ask whether the task or the architecture shapes the learned dynamics of a recurrent network more, and whether the answer depends on the task. The project was originally planned around standard DSA (Ostrow et al. 2023), but during instructor consultation we realised that standard DSA compares whole trajectories and cannot separate the intrinsic dynamics from the input processing, which turned out to be central to our hypothesis. We therefore switched to InputDSA (Huang et al. 2025), which fits an input driven linear model x_next = A x + B u to each network and lets us compare the intrinsic dynamics A and the input matrix B separately. We train small vanilla RNN, GRU and LSTM networks on two NeuroGym tasks, PerceptualDecisionMaking (PDM) and DelayComparison (DC), and compare the fitted matrices across models. The main analysis compares vanilla RNN and GRU, and LSTM is added as a third architecture to test whether the pattern generalises.
 
 ## 2. Repository structure
 
 | Path | What it holds |
 | --- | --- |
 | `README.md` |  |
-| `technical_note.md` | backgruond, hypothesis, method, main results, key figures and limitations |
+| `technical_note.md` | method, main results, key figures and limitations |
 | `requirements.txt` | Python dependencies |
-| `notebooks/InputDSA.ipynb` | primary analysis, 2 architectures, A and B matrices |
-| `src/` | extension pipeline that adds LSTM as a third architecture |
-| `figures/` | figures used in the presentation |
-| `results/` | saved distance matrices and summary files |
-
-The notebook is the main result. The pipeline in `src/` re-runs the same comparison with LSTM added and with plain DSA and geometric Procrustes as method controls.
+| `notebooks/InputDSA.ipynb` | full analysis: training, A and B matrix fits, rank study, sensitivity checks, mechanism, LSTM extension |
+| `figures/` | all figures produced during the project, with the ones embedded in the technical note marked in `figures/README.md` |
 
 ## 3. How to run
 
@@ -35,19 +31,13 @@ pip install "git+https://github.com/mitchellostrow/DSA.git"
 
 The DSA package is installed from GitHub, not from PyPI. On Colab pin `numpy==2.2.6` and `scipy==1.14.1` with `--force-reinstall --no-deps` if you hit an import error.
 
-Reproduce the main result: open `notebooks/InputDSA.ipynb` and run top to bottom.
-
-Reproduce the extension: `cd src && python run_grid.py` for the InputDSA grid, `--method dsa` or `--method procrustes` for the controls.
-
-Runtime: about 15 seconds per vanilla model and 30 seconds per GRU model. The full notebook takes a few minutes end to end.
+To reproduce the results, open `notebooks/InputDSA.ipynb` and run the cells from top to bottom. Runtime: about 15 seconds per vanilla model, 30 seconds per GRU model and slightly more per LSTM model. The full notebook takes a few minutes end to end on a Colab GPU.
 
 ## 4. Author contributions
 
-Arina Kleizer ran the primary analysis in `notebooks/InputDSA.ipynb`: training the 20 two-architecture models, fitting A and B, the rank selection study, the sensitivity checks and the B matrix analysis with its mechanistic decomposition.
+This project was a joint effort at every stage. We planned it, made all main decisions and discussed every new result as a team, deciding the next steps side by side. 
 
-Apekshith Thirnahalli Jayadeva built the pipeline in `src/` and added the LSTM as a third architecture, together with plain DSA and geometric Procrustes as method controls.
-
-Both authors planned the project together and made all main decisions jointly. Throughout the work we discussed each new result and decided the next steps together. We also shared the literature review, the presentation design and the repository organisation.
+The actual runs happened in parallel on our own machines. Apekshith Thirnahalli Jayadeva ran the full three-architecture design, including LSTM as the third architecture. Arina Kleizer ran the same design in her notebook, which is the version we used for the final numbers because it kept the same setup as the two-architecture main analysis. Both runs gave the same qualitative picture, which is a nice cross-check between our machines. Both authors also shared the literature review, the presentation design and the repository organisation.
 
 ## 5. Documentation of LLM usage
 
