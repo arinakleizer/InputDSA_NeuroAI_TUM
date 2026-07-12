@@ -1,4 +1,5 @@
-# Task and architecture in learned RNN dynamics: method, results and limitations
+# Task and architecture in learned RNN dynamics: 
+# method, results and limitations
 
 ## Background and hypothesis
 
