@@ -166,8 +166,6 @@ Two gated architectures cluster together on PDM, both separated from vanilla, an
 
 ## Limitations
 
-None of these break the main result, but they mark where a reader should hold our conclusions with care.
-
 - **PDM sits below DC in accuracy.** The raw task effect is slightly confounded with training quality. Architectures are matched within each task, so the architecture effect is clean (Cell 7).
 - **The A analysis depends on the rank.** Task dominance holds across ranks, but the interaction sign flips and OHT (13) and AIC (15) disagree, so the A interaction is inconclusive (Cells 31 to 39). MASE also stayed above 1 (Cell 36).
 - **No independent constraint ranking.** Barak et al. (2013) show DC admits several solutions, so we do not rank the tasks by solution count. A structural analysis is future work.
