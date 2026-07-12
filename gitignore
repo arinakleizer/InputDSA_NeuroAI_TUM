@@ -1,0 +1,27 @@
+# Large data artefacts, kept in Google Drive not in the repository
+data/
+saved_models/
+hidden_states/
+states_inputs/
+states_inputs_inputdsa/
+results/
+part2_weights/
+part2_states_inputs_inputdsa/
+part2_results_inputdsa/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
