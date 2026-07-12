@@ -139,7 +139,7 @@ One piece is still open. The angles between the raw channel injection directions
 
 ### A stress test with a third architecture: LSTM
 
-The B result generalises to a second gated architecture. We added LSTM as a third architecture with the same setup (10 more models, matched seeds, hidden size and training recipe). On all three metrics we already used, LSTM behaves like GRU rather than like vanilla RNN.
+The B result generalises to a second gated architecture. We added LSTM as a third architecture with the same setup (10 more models, matched seeds, hidden size and training recipe). On all three metrics we already used, LSTM behaves like GRU rather than like vanilla RNN (Cells 56, 57, 58, 59).
 
 | Metric (on PDM) | vanilla | GRU | LSTM |
 | --- | --- | --- | --- |
@@ -165,6 +165,8 @@ Two gated architectures cluster together on PDM, both separated from vanilla, an
 **What stays open.** The sharper A interaction claim did not survive rank sensitivity, so we call it inconclusive. Two items for future work: an independent test of solution diversity between the two tasks, and a qualitatively different task such as the flip flop task of Sussillo and Barak (2013), where the shared attractor motif of PDM and DC is broken.
 
 ## Limitations
+
+None of these break the main result, but they mark where a reader should hold our conclusions with care.
 
 - **PDM sits below DC in accuracy.** The raw task effect is slightly confounded with training quality. Architectures are matched within each task, so the architecture effect is clean (Cell 7).
 - **The A analysis depends on the rank.** Task dominance holds across ranks, but the interaction sign flips and OHT (13) and AIC (15) disagree, so the A interaction is inconclusive (Cells 31 to 39). MASE also stayed above 1 (Cell 36).
