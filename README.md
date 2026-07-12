@@ -20,7 +20,9 @@ We ask whether the task or the architecture shapes the learned dynamics of a rec
 
 ## 3. How to run
 
-Python 3.12. Install:
+Python 3.12. Two ways to install:
+
+**Option A: venv + pip.**
 
 ```
 python -m venv .venv
@@ -28,6 +30,15 @@ source .venv/bin/activate
 pip install -r requirements.txt
 pip install "git+https://github.com/mitchellostrow/DSA.git"
 ```
+
+**Option B: conda.**
+
+```
+conda env create -f environment.yaml
+conda activate inputdsa
+```
+
+Conda installs DSA automatically as part of the environment.
 
 The DSA package is installed from GitHub, not from PyPI. On Colab pin `numpy==2.2.6` and `scipy==1.14.1` with `--force-reinstall --no-deps` if you hit an import error.
 
