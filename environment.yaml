@@ -1,0 +1,36 @@
+name: inputdsa
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python
+  - python=3.12
+
+  # Core numerical stack
+  # Pinned to avoid version conflicts with the DSA package.
+  - numpy=2.2.6
+  - scipy=1.14.1
+
+  # Deep learning
+  - pytorch
+  - torchvision
+
+  # Analysis and plotting
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - pandas
+
+  # Notebook environment
+  - jupyter
+  - ipykernel
+
+  # pip-only packages
+  - pip
+  - pip:
+      # Tasks (NeuroGym wraps gymnasium)
+      - neurogym
+      - gymnasium
+
+      # Dynamical Similarity Analysis (DSA + InputDSA), from GitHub
+      - "git+https://github.com/mitchellostrow/DSA.git"
