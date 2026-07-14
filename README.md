@@ -18,6 +18,7 @@ We ask whether the task or the architecture shapes the learned dynamics of a rec
 | `notebooks/InputDSA.ipynb` | full analysis: training, A and B matrix fits, rank study, sensitivity checks, mechanism, LSTM extension |
 | `figures/` | all figures produced during the project, with the ones embedded in the technical note marked in `figures/README.md` |
 
+For our work with default parameters please visit - https://github.com/apekshithtj/NeuroAI_DSA
 ## 3. How to run
 
 Python 3.12. Two ways to install:
